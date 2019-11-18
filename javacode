@@ -1,0 +1,112 @@
+//made by Batu Budin & Bugra Veysel Yildiz (14 November 2019)
+
+
+package ss.week1.hotel;
+        import ss.week1.hotel.utils.TextIO;  // It is using TextIO library
+
+
+
+
+public class onepointtwelve {      // here you can see the command menu of the system
+    private static void printt(){
+        System.out.println("Welcome to the Hotel booking system of the U Parkhotel");
+        System.out.println("Commands:");
+        System.out.println("i name ............... check in guest with name");
+        System.out.println("o name ............... check out guest with name");
+        System.out.println("r name ............... request room of guest");
+        System.out.println("h .................... help (this menu)");
+        System.out.println("p .................... print state");
+        System.out.println("x .................... exit");
+        System.out.println("Command:");
+    }
+
+
+
+
+
+
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    public static void main(String args[]) {
+        printt();     // calls the command menu of the system
+        boolean exit = false;
+        String room = "Room 1107"; // this code is only specified for Room 1107.
+        String guest = null;
+        while(!exit) {   // it runs since you did not exit the menu
+            String input = TextIO.getln();
+            String[] split = input.split(" ");
+            String parm = null;
+            String comm = split[0];
+            int b = comm.length();
+            if (split.length > 1){
+                parm = split[1];
+            }
+            if (b == 1 ) {
+                if (comm.equals("i")) {     // when you do not write then name next to the command where you need to write name, it prints an error message
+                    if (parm == null) {
+                        System.out.println("Error please write again.");
+
+                    }
+                    else if (guest == null) {
+                        guest = parm;
+                    }
+                }
+                else if (comm.equals("o")) {
+                    if (parm == null) {
+                        System.out.println("Error please write again.");
+
+                    }
+                    else if (guest == null) {
+                        System.out.println("Error please write again.");
+
+                    }
+                    else {
+                        guest = null;
+                        System.out.println("See you next time.");
+                    }
+
+                }
+                else if (comm.equals("r")) {
+                    if (parm == null) {
+                        System.out.println("Error please write again.");
+
+                    }
+                    else if (!parm.equals(guest)) {
+                        System.out.println("Error please write again.");
+
+                    }
+                    else if (parm.equals(guest)) {
+                        System.out.println(guest+" is staying at "+ room);
+                    }
+                }
+                else if (comm.equals("p")) {
+                    if (guest == null) {
+                        System.out.println("Our hotel has 1 room and its free");
+                    }
+                    else if (guest != null) {
+                        System.out.println("Our hotel is full, sorry :(");
+                    }
+                }
+                else if (comm.equals("h")) {
+                    printt();
+                }
+                else if (comm.equals("x")) {
+                    System.out.println("Goodbye:)x");
+                    exit = true;
+                }
+                else {
+                    System.out.println("Error please write again.");
+
+                }
+
+            }
+            else {
+                System.out.println("Error please write again.");
+                printt();
+            }
+        }
+    }
+}
